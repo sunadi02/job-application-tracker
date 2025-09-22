@@ -1,4 +1,4 @@
-// src/app/login/page.tsx
+
 'use client';
 
 import { useState } from 'react';
@@ -20,15 +20,19 @@ export default function Login() {
     setError('');
 
     try {
-      // 1. Sign in the user with Firebase Auth
+    
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       console.log('User logged in:', userCredential.user);
 
-      // 2. Redirect to the dashboard
+      
       router.push('/dashboard');
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Error logging in:', error);
-      setError(error.message || 'Failed to sign in. Please check your credentials.');
+      if (error instanceof Error) {
+        setError(error.message);
+      } else {
+        setError('Failed to sign in. Please check your credentials.');
+      }
     } finally {
       setIsLoading(false);
     }

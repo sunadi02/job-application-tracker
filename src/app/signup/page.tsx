@@ -1,4 +1,4 @@
-// src/app/signup/page.tsx
+
 'use client';
 
 import { useState } from 'react';
@@ -20,14 +20,14 @@ export default function SignUp() {
     setError('');
 
     try {
-      // 1. Create the user in Firebase Auth
+      
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       console.log('User created:', userCredential.user);
 
-      // 2. Redirect to the dashboard upon successful signup
+      
       router.push('/dashboard');
     } catch (error: unknown) {
-      // 3. Handle errors gracefully
+      
       console.error('Error signing up:', error);
       if (error instanceof Error) {
         setError(error.message || 'Failed to create an account. Please try again.');
