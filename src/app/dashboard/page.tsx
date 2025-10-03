@@ -6,13 +6,13 @@ import { useRouter } from 'next/navigation';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { auth } from '@/lib/firebase'; 
 import AddApplicationForm from '@/components/AddApplicationForm'; 
+import ApplicationList from '@/components/ApplicationList';
 import type { User } from 'firebase/auth';
 
 export default function Dashboard() {
   const router = useRouter();
   const [userEmail, setUserEmail] = useState('');
   const [user, setUser] = useState<User | null>(null);
-  
   
 
 useEffect(() => {
@@ -51,7 +51,7 @@ useEffect(() => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
+  
       <header className="bg-white shadow-sm">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
           <h1 className="text-xl font-semibold text-gray-900">JobTracker Dashboard</h1>
@@ -69,15 +69,8 @@ useEffect(() => {
 
       
       <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        
         <AddApplicationForm />
-
-        
-        <div className="bg-white p-6 rounded-lg shadow-md">
-          <h2 className="text-xl font-semibold mb-4">📋 Your Job Applications</h2>
-          <p className="text-gray-600">Your applications will be listed here. Try adding one above!</p>
-          
-        </div>
+        <ApplicationList /> 
       </main>
     </div>
   );
