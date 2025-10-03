@@ -4,10 +4,12 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '@/lib/firebase';
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { doc, setDoc } from 'firebase/firestore';
+import { auth, db } from '@/lib/firebase';
 
 export default function SignUp() {
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -22,15 +24,26 @@ export default function SignUp() {
     try {
       
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      console.log('User created:', userCredential.user);
+      const user = userCredential.user;
 
       
+      await updateProfile(user, {
+        displayName: name
+      });
+
+      
+      await setDoc(doc(db, 'users', user.uid), {
+        name: name,
+        email: email,
+        createdAt: new Date().toISOString(),
+      });
+
+      console.log('User created and profile updated:', user);
       router.push('/dashboard');
     } catch (error: unknown) {
-      
       console.error('Error signing up:', error);
       if (error instanceof Error) {
-        setError(error.message || 'Failed to create an account. Please try again.');
+        setError(error.message);
       } else {
         setError('Failed to create an account. Please try again.');
       }
@@ -61,6 +74,26 @@ export default function SignUp() {
                 {error}
               </div>
             )}
+            
+            
+            <div>
+              <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+                Full Name
+              </label>
+              <div className="mt-1">
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  autoComplete="name"
+                  required
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                />
+              </div>
+            </div>
+
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-700">
                 Email address

@@ -1,10 +1,10 @@
-// src/components/AddApplicationForm.tsx
+
 'use client';
 
 import { useState } from 'react';
 import { addDoc, collection } from 'firebase/firestore';
-import { db, auth } from '@/lib/firebase'; // Use your correct import path
-import { JobApplication } from '@/types'; // Use your correct import path
+import { db, auth } from '@/lib/firebase'; 
+import { JobApplication } from '@/types'; 
 
 export default function AddApplicationForm() {
   const [company, setCompany] = useState('');
@@ -13,41 +13,46 @@ export default function AddApplicationForm() {
   const [appliedDate, setAppliedDate] = useState(new Date().toISOString().split('T')[0]); // Default to today
   const [note, setNote] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
+    setError('');
 
-    // Get the current user
+    
     const user = auth.currentUser;
     if (!user) {
-      console.error('No user logged in!');
+      setError('No user logged in! Please log in again.');
+      setIsLoading(false);
       return;
     }
 
-    // Create a new application object
+   
     const newApplication: Omit<JobApplication, 'id'> = {
       company,
       role,
       status,
       appliedDate,
       note,
-      userId: user.uid, // The most important part: link to the user
+      userId: user.uid, 
     };
 
     try {
-      // Add a new document to the "applications" collection in Firestore
+      console.log('Attempting to add document:', newApplication);
+
       const docRef = await addDoc(collection(db, 'applications'), newApplication);
       console.log('Document written with ID: ', docRef.id);
 
-      // Reset the form
       setCompany('');
       setRole('');
       setStatus('Applied');
       setNote('');
-      // Keep the date as today for quick adding another
+      alert('Application added successfully!');
+      
     } catch (error) {
       console.error('Error adding document: ', error);
+      setError(`Failed to add application: ${error}`);
     } finally {
       setIsLoading(false);
     }
@@ -56,6 +61,13 @@ export default function AddApplicationForm() {
   return (
     <div className="bg-white p-6 rounded-lg shadow-md mb-8">
       <h2 className="text-xl font-semibold mb-4">➕ Add New Application</h2>
+
+      {error && (
+        <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-md text-sm mb-4">
+          {error}
+        </div>
+      )}
+      
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
