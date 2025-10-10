@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { collection, query, where, onSnapshot, orderBy } from 'firebase/firestore';
 import { db, auth } from '@/lib/firebase';
+import { onAuthStateChanged, User } from 'firebase/auth';
 import { JobApplication } from '@/types';
 
 export default function ApplicationList() {
@@ -10,41 +11,61 @@ export default function ApplicationList() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-  const user = auth.currentUser;
-  if (!user) return;
+    // Wait for Firebase Auth to provide the current user before querying Firestore.
+    setIsLoading(true);
+    let unsubscribeFromSnapshot: (() => void) | null = null;
 
-  console.log('Fetching applications for user:', user.uid);
+    const unsubscribeAuth = onAuthStateChanged(auth, (user: User | null) => {
+      if (!user) {
+        // No user - clear list and stop loading
+        setApplications([]);
+        setIsLoading(false);
+        // If there was a previous snapshot listener, remove it
+        if (unsubscribeFromSnapshot) {
+          unsubscribeFromSnapshot();
+          unsubscribeFromSnapshot = null;
+        }
+        return;
+      }
 
-    const q = query(
-    collection(db, 'applications'),
-    where('userId', '==', user.uid),
-    orderBy('appliedDate', 'desc') 
-  );
+      console.log('Fetching applications for user:', user.uid);
 
-    
-    const unsubscribe = onSnapshot(
-    q, 
-    (querySnapshot) => {
-      const apps: JobApplication[] = [];
-      querySnapshot.forEach((doc) => {
-        console.log('Found application:', doc.id, doc.data());
-        apps.push({ id: doc.id, ...doc.data() } as JobApplication);
-      });
-      
+      const q = query(
+        collection(db, 'applications'),
+        where('userId', '==', user.uid),
+        orderBy('appliedDate', 'desc')
+      );
 
-      apps.sort((a, b) => new Date(b.appliedDate).getTime() - new Date(a.appliedDate).getTime());
-      
-      setApplications(apps);
-      setIsLoading(false);
-      console.log('Total applications found:', apps.length);
-    },
-    (error) => {
-      console.error('Error fetching applications:', error);
-      setIsLoading(false);
-    }
-  );
-    
-    return () => unsubscribe();
+      // Unsubscribe previous snapshot listener if any
+      if (unsubscribeFromSnapshot) unsubscribeFromSnapshot();
+
+      unsubscribeFromSnapshot = onSnapshot(
+        q,
+        (querySnapshot) => {
+          const apps: JobApplication[] = [];
+          querySnapshot.forEach((doc) => {
+            apps.push({ id: doc.id, ...(doc.data() as Omit<JobApplication, 'id'>) } as JobApplication);
+          });
+
+          // Ensure consistent ordering (appliedDate stored as ISO string)
+          apps.sort((a, b) => new Date(b.appliedDate).getTime() - new Date(a.appliedDate).getTime());
+
+          setApplications(apps);
+          setIsLoading(false);
+          console.log('Total applications found:', apps.length);
+        },
+        (error) => {
+          console.error('Error fetching applications:', error);
+          setIsLoading(false);
+        }
+      );
+    });
+
+    return () => {
+      // Cleanup both listeners
+      unsubscribeAuth();
+      if (unsubscribeFromSnapshot) unsubscribeFromSnapshot();
+    };
   }, []);
 
   const getStatusColor = (status: string) => {
