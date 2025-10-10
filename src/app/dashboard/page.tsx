@@ -28,18 +28,6 @@ useEffect(() => {
   return () => unsubscribe();
 }, [router]);
 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (!user) {
-        router.push('/login');
-      } else {
-        console.log('User is logged in:', user.email);
-        setUserEmail(user.email || '');
-      }
-    });
-    return () => unsubscribe();
-  }, [router]);
-
   const handleLogout = async () => {
     try {
       await signOut(auth);
