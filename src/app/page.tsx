@@ -152,7 +152,7 @@ export default function Home() {
               <span className="font-semibold text-gray-900">JobTracker</span>
             </div>
             <p className="text-sm text-gray-500">
-              © 2024 JobTracker. Built with ❤️ for job seekers everywhere.
+              © 2024 JobTracker. For job seekers everywhere.
             </p>
           </div>
         </div>

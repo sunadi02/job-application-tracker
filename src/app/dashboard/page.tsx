@@ -7,6 +7,7 @@ import { auth } from '@/lib/firebase';
 import AddApplicationForm from '@/components/AddApplicationForm';
 import ApplicationList from '@/components/ApplicationList';
 import type { User } from 'firebase/auth';
+import Link from 'next/link';
 
 export default function Dashboard() {
   const router = useRouter();
@@ -72,17 +73,53 @@ export default function Dashboard() {
               </div>
             </div>
             <div className="flex items-center gap-4">
-              <div className="hidden md:flex items-center gap-2 px-4 py-2 bg-gray-50 rounded-lg">
-                <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white font-semibold text-sm">
-                  {user?.displayName?.charAt(0) || userEmail.charAt(0).toUpperCase()}
+              {/* Clickable Profile Section */}
+              <Link 
+                href="/profile"
+                className="hidden md:flex items-center gap-2 px-4 py-2 bg-gray-50 rounded-lg hover:bg-gray-100 transition-all cursor-pointer group"
+                title="Edit Profile"
+              >
+                <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white font-semibold text-sm overflow-hidden">
+                  {user?.photoURL ? (
+                    <img 
+                      src={user.photoURL} 
+                      alt="Profile" 
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <span>{user?.displayName?.charAt(0) || userEmail.charAt(0).toUpperCase()}</span>
+                  )}
                 </div>
                 <div className="text-left">
-                  <p className="text-sm font-semibold text-gray-900">
+                  <p className="text-sm font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
                     {user?.displayName || userEmail.split('@')[0]}
                   </p>
                   <p className="text-xs text-gray-500">{userEmail}</p>
                 </div>
-              </div>
+                <svg className="w-4 h-4 text-gray-400 group-hover:text-blue-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+
+              {/* Mobile Profile Button */}
+              <Link
+                href="/profile"
+                className="md:hidden p-2 bg-gray-50 rounded-lg hover:bg-gray-100 transition-all"
+                title="Edit Profile"
+              >
+                <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white font-semibold text-sm overflow-hidden">
+                  {user?.photoURL ? (
+                    <img 
+                      src={user.photoURL} 
+                      alt="Profile" 
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <span>{user?.displayName?.charAt(0) || userEmail.charAt(0).toUpperCase()}</span>
+                  )}
+                </div>
+              </Link>
+
               <button
                 onClick={handleLogout}
                 className="flex items-center gap-2 px-4 py-2 bg-red-50 hover:bg-red-100 text-red-600 rounded-lg font-medium transition-all"
@@ -107,7 +144,7 @@ export default function Dashboard() {
       <footer className="bg-white border-t border-gray-200 mt-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <p className="text-center text-sm text-gray-500">
-            © 2024 JobTracker. Built with ❤️ for job seekers everywhere.
+            © 2024 JobTracker. For job seekers everywhere.
           </p>
         </div>
       </footer>

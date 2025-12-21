@@ -1,4 +1,3 @@
-
 export interface JobApplication {
   id?: string; 
   company: string;
@@ -7,4 +6,17 @@ export interface JobApplication {
   appliedDate: string; 
   note?: string; 
   userId: string; 
+}
+
+export interface UserProfile {
+  uid: string;
+  displayName: string;
+  email: string;
+  photoURL?: string;
+  phoneNumber?: string;
+  bio?: string;
+  location?: string;
+  website?: string;
+  createdAt: string;
+  updatedAt?: string;
 }
