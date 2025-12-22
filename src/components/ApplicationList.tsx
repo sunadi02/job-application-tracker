@@ -216,10 +216,10 @@ export default function ApplicationList() {
                       onChange={(e) => handleStatusUpdate(app.id!, e.target.value as JobApplication['status'])}
                       className={`px-3 py-1 rounded-full text-sm font-semibold border ${getStatusColor(app.status)}`}
                     >
-                      <option value="Applied">📝 Applied</option>
-                      <option value="Interview">📞 Interview</option>
-                      <option value="Offer">🎉 Offer</option>
-                      <option value="Rejected">❌ Rejected</option>
+                      <option value="Applied">Applied</option>
+                      <option value="Interview">Interview</option>
+                      <option value="Offer">Offer</option>
+                      <option value="Rejected">Rejected</option>
                     </select>
                     <button
                       onClick={() => handleDelete(app.id!)}

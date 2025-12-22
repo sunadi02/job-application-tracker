@@ -46,7 +46,7 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+    <div className="h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 flex flex-col justify-center py-4 sm:px-6 lg:px-8" style={{ zoom: 1 }}>
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <Link href="/" className="flex justify-center mb-6">
           <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl flex items-center justify-center shadow-xl">
@@ -55,7 +55,7 @@ export default function Login() {
             </svg>
           </div>
         </Link>
-        <h2 className="text-center text-4xl font-bold text-gray-900 mb-2">
+        <h2 className="text-center text-3xl font-bold text-gray-900 mb-2">
           Welcome back
         </h2>
         <p className="text-center text-gray-600">
@@ -67,8 +67,8 @@ export default function Login() {
       </div>
 
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="bg-white py-10 px-6 shadow-2xl rounded-2xl border border-gray-100 sm:px-10">
-          <form className="space-y-6" onSubmit={handleSubmit}>
+        <div className="bg-white py-4 px-6 shadow-2xl rounded-2xl border border-gray-100 sm:px-10">
+          <form className="space-y-4" onSubmit={handleSubmit}>
             {error && (
               <div className="bg-red-50 border-l-4 border-red-500 p-4 rounded-lg">
                 <div className="flex items-start">

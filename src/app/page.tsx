@@ -5,8 +5,9 @@ export default function Home() {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
       {/* Header */}
       <header className="bg-white/80 backdrop-blur-sm shadow-sm border-b border-gray-200 sticky top-0 z-50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-          <div className="flex items-center gap-3">
+        <div className="max-w-screen-xl mx-auto px-2 sm:px-4 lg:px-6 py-4 flex justify-between items-center">
+          <a href = "">
+            <div className="flex items-center gap-3">
             <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center shadow-lg">
               <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -16,6 +17,7 @@ export default function Home() {
               JobTracker
             </h1>
           </div>
+          </a>
           <nav className="flex gap-4">
             <Link 
               href="/login" 
@@ -34,11 +36,11 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <main className="max-w-screen-xl mx-auto px-2 sm:px-4 lg:px-6 py-20">
         <div className="text-center mb-16">
           <div className="inline-block mb-6">
             <span className="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-semibold">
-              🚀 Your Career Companion
+              Your Career Companion
             </span>
           </div>
           <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
@@ -141,7 +143,7 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="bg-white border-t border-gray-200 mt-20">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="max-w-screen-xl mx-auto px-2 sm:px-4 lg:px-6 py-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="flex items-center gap-3">
               <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">

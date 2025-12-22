@@ -59,7 +59,7 @@ export default function AddApplicationForm() {
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-lg p-6 mb-8 border border-gray-100">
+    <div className="bg-white rounded-xl shadow-lg p-10  mb-8 border border-gray-100">
       <div className="flex items-center gap-3 mb-6">
         <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
           <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -131,10 +131,10 @@ export default function AddApplicationForm() {
               required
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all bg-white"
             >
-              <option value="Applied">📝 Applied</option>
-              <option value="Interview">📞 Interview</option>
-              <option value="Offer">🎉 Offer</option>
-              <option value="Rejected">❌ Rejected</option>
+              <option value="Applied">Applied</option>
+              <option value="Interview">Interview</option>
+              <option value="Offer">Offer</option>
+              <option value="Rejected">Rejected</option>
             </select>
           </div>
           <div>
