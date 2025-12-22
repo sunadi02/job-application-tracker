@@ -27,6 +27,7 @@ export default function ProfilePage() {
   const [photoURL, setPhotoURL] = useState('');
   const [oldPhotoPath, setOldPhotoPath] = useState('');
 
+  
   useEffect(() => {
     if (!storage) {
       console.error('Firebase Storage is not initialized');
@@ -106,6 +107,7 @@ export default function ProfilePage() {
       
       setSuccess('Profile picture updated successfully!');
       setTimeout(() => setSuccess(''), 3000);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       console.error('Error uploading image:', error);
 
@@ -197,6 +199,7 @@ export default function ProfilePage() {
       };
 
       if (userDoc.exists()) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         await updateDoc(userRef, profileData as any);
       } else {
         await setDoc(userRef, profileData);
@@ -208,6 +211,7 @@ export default function ProfilePage() {
       console.error('Error updating profile:', error);
       
       const errorMessage = error instanceof Error ? error.message : '';
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const errorCode = (error as any)?.code || '';
       
       if (errorCode === 'auth/requires-recent-login') {
@@ -298,6 +302,7 @@ export default function ProfilePage() {
                 <div className="relative">
                   <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-full overflow-hidden bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center text-white text-3xl sm:text-4xl font-bold shadow-lg">
                     {photoURL ? (
+                      // eslint-disable-next-line @next/next/no-img-element
                       <img src={photoURL} alt="Profile" className="w-full h-full object-cover" />
                     ) : (
                       <span>{displayName?.charAt(0) || email?.charAt(0).toUpperCase()}</span>

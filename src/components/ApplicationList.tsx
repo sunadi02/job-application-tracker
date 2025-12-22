@@ -89,16 +89,6 @@ export default function ApplicationList() {
     }
   };
 
-  const getStatusIcon = (status: string) => {
-    switch (status) {
-      case 'Applied': return '📝';
-      case 'Interview': return '📞';
-      case 'Offer': return '🎉';
-      case 'Rejected': return '❌';
-      default: return '📄';
-    }
-  };
-
   const filteredApplications = applications.filter(app => {
     const matchesFilter = filter === 'all' || app.status === filter;
     const matchesSearch = app.company.toLowerCase().includes(searchTerm.toLowerCase()) ||
