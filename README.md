@@ -11,19 +11,27 @@
 ## 📸 Screenshots
 
 ### Landing Page
-[Add screenshot of landing page here]
+<img width="3840" height="2160" alt="Screenshot (390)" src="https://github.com/user-attachments/assets/e0b3275e-b263-46a8-a9b7-88ea3f14c8c4" />
+<img width="3840" height="2160" alt="Screenshot (391)" src="https://github.com/user-attachments/assets/e3e2daa0-b881-4261-8fad-ec497c44b212" />
+
+### Login Page
+<img width="3840" height="2160" alt="Screenshot (393)" src="https://github.com/user-attachments/assets/169608b9-72e5-4deb-8bd7-2ca7a118f43e" />
+
+### Signup Page
+<img width="3840" height="2160" alt="Screenshot (392)" src="https://github.com/user-attachments/assets/c306643b-63c9-4c32-9cf3-b2b38709dfa7" />
 
 ### Dashboard
-[Add screenshot of dashboard with applications here]
+<img width="3840" height="2160" alt="Screenshot (394)" src="https://github.com/user-attachments/assets/abd600d9-7e10-425f-9c1b-04927a27f9c0" />
 
 ### Application Details
-[Add screenshot of application card/details here]
+<img width="3840" height="2160" alt="Screenshot (395)" src="https://github.com/user-attachments/assets/780d1f3f-47b3-459e-86ff-3d54f1e50e0d" />
 
 ### Profile Management
-[Add screenshot of profile page here]
+<img width="3840" height="2160" alt="Screenshot (396)" src="https://github.com/user-attachments/assets/66746b95-1c80-41dc-9e27-4af8446e981a" />
 
 ### Mobile View
-[Add screenshot of mobile responsive design here]
+<img width="1251" height="2077" alt="Screenshot (398)" src="https://github.com/user-attachments/assets/769121c7-fe9a-4246-bf06-26fec03959e1" />
+
 
 ---
 
