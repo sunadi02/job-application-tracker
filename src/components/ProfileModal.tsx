@@ -6,6 +6,7 @@ import { doc, getDoc, setDoc, updateDoc } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
 import { uploadProfileImage, deleteProfileImage } from '@/lib/uploadImage';
 import { UserProfile } from '@/types';
+import Image from 'next/image';
 
 interface ProfileModalProps {
   user: User;
@@ -28,11 +29,6 @@ export default function ProfileModal({ user, isOpen, onClose }: ProfileModalProp
   const [photoURL, setPhotoURL] = useState('');
   const [oldPhotoPath, setOldPhotoPath] = useState('');
 
-  useEffect(() => {
-    if (isOpen && user) {
-      loadProfile();
-    }
-  }, [isOpen, user]);
 
   const loadProfile = useCallback(async () => {
       try {
@@ -222,7 +218,13 @@ export default function ProfileModal({ user, isOpen, onClose }: ProfileModalProp
               <div className="relative">
                 <div className="w-24 h-24 rounded-full overflow-hidden bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center text-white text-3xl font-bold">
                   {photoURL ? (
-                    <img src={photoURL} alt="Profile" className="w-full h-full object-cover" />
+                    <Image 
+                      src={photoURL || '/default-avatar.png'} 
+                      alt="Profile" 
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    />
                   ) : (
                     <span>{displayName?.charAt(0) || email?.charAt(0).toUpperCase()}</span>
                   )}
