@@ -22,11 +22,10 @@
 
 
 ### Dashboard
-<img width="3840" height="2160" alt="Screenshot (394)" src="https://github.com/user-attachments/assets/abd600d9-7e10-425f-9c1b-04927a27f9c0" />
+<img width="3840" height="2083" alt="Screenshot (402)" src="https://github.com/user-attachments/assets/36c8eb24-af75-44d3-86b0-91654a17ea7f" />
+
 
 ### Application Details
-<img width="3840" height="2083" alt="Screenshot (402)" src="https://github.com/user-attachments/assets/064d6d62-aa6e-4580-801a-d8543d83ea49" />
-
 <img width="3840" height="2083" alt="Screenshot (403)" src="https://github.com/user-attachments/assets/7f07e7ee-2eb3-4be9-a484-050362a17c87" />
 
 ### Profile Management
