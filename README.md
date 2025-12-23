@@ -1,36 +1,39 @@
 # 🎯 JobTracker - Your Ultimate Job Application Manager
 
-[![Next.js](https://img.shields.io/badge/Next.js-15-black?logo=next.js)](https://nextjs.org/)
-[![Firebase](https://img.shields.io/badge/Firebase-10-orange?logo=firebase)](https://firebase.google.com/)
+[![Next.js](https://img.shields.io/badge/Next.js-16-black?logo=next.js)](https://nextjs.org/)
+[![Firebase](https://img.shields.io/badge/Firebase-12-orange?logo=firebase)](https://firebase.google.com/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?logo=typescript)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-4-38bdf8?logo=tailwind-css)](https://tailwindcss.com/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-> A modern, intuitive web application to track and manage your job applications throughout your career journey. Built with Next.js 15, Firebase, and TypeScript for a seamless experience across all devices.
+> A modern, intuitive web application to track and manage your job applications throughout your career journey. Built with Next.js 16, Firebase, and TypeScript for a seamless experience across all devices.
 
 ## 📸 Screenshots
 
 ### Landing Page
-<img width="3840" height="2160" alt="Screenshot (390)" src="https://github.com/user-attachments/assets/e0b3275e-b263-46a8-a9b7-88ea3f14c8c4" />
-<img width="3840" height="2160" alt="Screenshot (391)" src="https://github.com/user-attachments/assets/e3e2daa0-b881-4261-8fad-ec497c44b212" />
+<img width="3840" height="2081" alt="Screenshot (399)" src="https://github.com/user-attachments/assets/6aeb68df-3378-4a4a-80c6-357deab37c1b" />
 
 ### Login Page
-<img width="3840" height="2160" alt="Screenshot (393)" src="https://github.com/user-attachments/assets/169608b9-72e5-4deb-8bd7-2ca7a118f43e" />
+<img width="3840" height="2081" alt="Screenshot (401)" src="https://github.com/user-attachments/assets/1601a001-0c11-4c1f-adda-9648cee420e9" />
+
 
 ### Signup Page
-<img width="3840" height="2160" alt="Screenshot (392)" src="https://github.com/user-attachments/assets/c306643b-63c9-4c32-9cf3-b2b38709dfa7" />
+<img width="3840" height="2080" alt="Screenshot (400)" src="https://github.com/user-attachments/assets/5911ba1b-1dcf-4963-88ec-a4b25e5ca486" />
+
 
 ### Dashboard
 <img width="3840" height="2160" alt="Screenshot (394)" src="https://github.com/user-attachments/assets/abd600d9-7e10-425f-9c1b-04927a27f9c0" />
 
 ### Application Details
-<img width="3840" height="2160" alt="Screenshot (395)" src="https://github.com/user-attachments/assets/780d1f3f-47b3-459e-86ff-3d54f1e50e0d" />
+<img width="3840" height="2083" alt="Screenshot (402)" src="https://github.com/user-attachments/assets/064d6d62-aa6e-4580-801a-d8543d83ea49" />
+
+<img width="3840" height="2083" alt="Screenshot (403)" src="https://github.com/user-attachments/assets/7f07e7ee-2eb3-4be9-a484-050362a17c87" />
 
 ### Profile Management
-<img width="3840" height="2160" alt="Screenshot (396)" src="https://github.com/user-attachments/assets/66746b95-1c80-41dc-9e27-4af8446e981a" />
+<img width="3840" height="2085" alt="Screenshot (404)" src="https://github.com/user-attachments/assets/9846b2ee-7523-4044-868b-ab8de1982087" />
 
 ### Mobile View
-<img width="1251" height="2077" alt="Screenshot (398)" src="https://github.com/user-attachments/assets/769121c7-fe9a-4246-bf06-26fec03959e1" />
+<img width="1245" height="2072" alt="Screenshot (405)" src="https://github.com/user-attachments/assets/97a854d1-d3ac-4143-99f5-43e36a2dedb6" />
 
 
 ---
@@ -71,7 +74,7 @@
 ### 🚀 **Performance & Features**
 - Real-time data synchronization with Firestore
 - Image optimization and compression
-- Fast page loads with Next.js 15
+- Fast page loads with Next.js 16
 - Type-safe development with TypeScript
 - Secure file uploads to Firebase Storage
 
@@ -81,7 +84,7 @@
 
 | Technology | Purpose |
 |-----------|---------|
-| **Next.js 15** | React framework with App Router |
+| **Next.js 16** | React framework with App Router |
 | **TypeScript** | Type-safe development |
 | **Firebase Auth** | User authentication |
 | **Cloud Firestore** | Real-time NoSQL database |
