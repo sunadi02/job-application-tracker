@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { User, updateProfile, updateEmail } from 'firebase/auth';
 import { doc, getDoc, setDoc, updateDoc } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
@@ -34,27 +34,33 @@ export default function ProfileModal({ user, isOpen, onClose }: ProfileModalProp
     }
   }, [isOpen, user]);
 
-  const loadProfile = async () => {
-    try {
-      const userDoc = await getDoc(doc(db, 'users', user.uid));
-      if (userDoc.exists()) {
-        const userData = userDoc.data() as UserProfile;
-        setDisplayName(userData.displayName || '');
-        setEmail(userData.email || '');
-        setPhoneNumber(userData.phoneNumber || '');
-        setBio(userData.bio || '');
-        setLocation(userData.location || '');
-        setWebsite(userData.website || '');
-        setPhotoURL(userData.photoURL || '');
-      } else {
-        setDisplayName(user.displayName || '');
-        setEmail(user.email || '');
-        setPhotoURL(user.photoURL || '');
+  const loadProfile = useCallback(async () => {
+      try {
+          const userDoc = await getDoc(doc(db, 'users', user.uid));
+          if (userDoc.exists()) {
+            const userData = userDoc.data() as UserProfile;
+            setDisplayName(userData.displayName || '');
+            setEmail(userData.email || '');
+            setPhoneNumber(userData.phoneNumber || '');
+            setBio(userData.bio || '');
+            setLocation(userData.location || '');
+            setWebsite(userData.website || '');
+            setPhotoURL(userData.photoURL || '');
+          } else {
+            setDisplayName(user.displayName || '');
+            setEmail(user.email || '');
+            setPhotoURL(user.photoURL || '');
+          }
+        } catch (error) {
+          console.error('Error loading profile:', error);
+        }
+}, [user]);
+
+    useEffect(() => {
+      if (user && isOpen) {
+        loadProfile();
       }
-    } catch (error) {
-      console.error('Error loading profile:', error);
-    }
-  };
+    }, [user, isOpen, loadProfile]);
 
   const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];

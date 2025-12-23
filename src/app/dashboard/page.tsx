@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
@@ -82,11 +83,12 @@ export default function Dashboard() {
               >
                 <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white font-semibold text-sm overflow-hidden">
                   {user?.photoURL ? (
-                    
-                    <img 
-                      src={user.photoURL} 
+                    <Image 
+                      src={user.photoURL || '/default-avatar.png'} 
                       alt="Profile" 
-                      className="w-full h-full object-cover"
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
                   ) : (
                     <span>{user?.displayName?.charAt(0) || userEmail.charAt(0).toUpperCase()}</span>
@@ -111,10 +113,13 @@ export default function Dashboard() {
               >
                 <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white font-semibold text-sm overflow-hidden">
                   {user?.photoURL ? (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img 
-                      src={user.photoURL} alt="Profile" 
-                      className="w-full h-full object-cover"
+
+                    <Image 
+                      src={user.photoURL || '/default-avatar.png'} 
+                      alt="Profile" 
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
                   ) : (
                     <span>{user?.displayName?.charAt(0) || userEmail.charAt(0).toUpperCase()}</span>
