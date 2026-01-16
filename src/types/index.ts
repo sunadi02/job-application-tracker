@@ -2,7 +2,7 @@ export interface JobApplication {
   id?: string; 
   company: string;
   role: string;
-  status: 'Applied' | 'Interview' | 'Rejected' | 'Offer'; 
+  status: 'Applied' | 'Phone Screen' | 'HR Interview' | 'Tech Interview' | 'Final Round' | 'Offer' | 'Rejected' | 'Withdrawn' | 'On Hold'; 
   appliedDate: string; 
   note?: string; 
   userId: string; 

@@ -132,9 +132,14 @@ export default function AddApplicationForm() {
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all bg-white"
             >
               <option value="Applied">Applied</option>
-              <option value="Interview">Interview</option>
+              <option value="Phone Screen">Phone Screen</option>
+              <option value="HR Interview">HR Interview</option>
+              <option value="Tech Interview">Tech Interview</option>
+              <option value="Final Round">Final Round</option>
               <option value="Offer">Offer</option>
               <option value="Rejected">Rejected</option>
+              <option value="Withdrawn">Withdrawn</option>
+              <option value="On Hold">On Hold</option>
             </select>
           </div>
           <div>

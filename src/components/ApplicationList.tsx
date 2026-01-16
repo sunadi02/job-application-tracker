@@ -82,9 +82,14 @@ export default function ApplicationList() {
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'Applied': return 'bg-blue-100 text-blue-800 border-blue-200';
-      case 'Interview': return 'bg-yellow-100 text-yellow-800 border-yellow-200';
+      case 'Phone Screen': return 'bg-indigo-100 text-indigo-800 border-indigo-200';
+      case 'HR Interview': return 'bg-purple-100 text-purple-800 border-purple-200';
+      case 'Tech Interview': return 'bg-yellow-100 text-yellow-800 border-yellow-200';
+      case 'Final Round': return 'bg-orange-100 text-orange-800 border-orange-200';
       case 'Offer': return 'bg-green-100 text-green-800 border-green-200';
       case 'Rejected': return 'bg-red-100 text-red-800 border-red-200';
+      case 'Withdrawn': return 'bg-gray-100 text-gray-800 border-gray-200';
+      case 'On Hold': return 'bg-cyan-100 text-cyan-800 border-cyan-200';
       default: return 'bg-gray-100 text-gray-800 border-gray-200';
     }
   };
@@ -99,7 +104,7 @@ export default function ApplicationList() {
   const stats = {
     total: applications.length,
     applied: applications.filter(a => a.status === 'Applied').length,
-    interview: applications.filter(a => a.status === 'Interview').length,
+    interview: applications.filter(a => ['Phone Screen', 'HR Interview', 'Tech Interview', 'Final Round'].includes(a.status)).length,
     offer: applications.filter(a => a.status === 'Offer').length,
     rejected: applications.filter(a => a.status === 'Rejected').length,
   };
@@ -172,9 +177,14 @@ export default function ApplicationList() {
             >
               <option value="all">All Status</option>
               <option value="Applied">Applied</option>
-              <option value="Interview">Interview</option>
+              <option value="Phone Screen">Phone Screen</option>
+              <option value="HR Interview">HR Interview</option>
+              <option value="Tech Interview">Tech Interview</option>
+              <option value="Final Round">Final Round</option>
               <option value="Offer">Offer</option>
               <option value="Rejected">Rejected</option>
+              <option value="Withdrawn">Withdrawn</option>
+              <option value="On Hold">On Hold</option>
             </select>
           </div>
         </div>
@@ -207,9 +217,14 @@ export default function ApplicationList() {
                       className={`px-3 py-1 rounded-full text-sm font-semibold border ${getStatusColor(app.status)}`}
                     >
                       <option value="Applied">Applied</option>
-                      <option value="Interview">Interview</option>
+                      <option value="Phone Screen">Phone Screen</option>
+                      <option value="HR Interview">HR Interview</option>
+                      <option value="Tech Interview">Tech Interview</option>
+                      <option value="Final Round">Final Round</option>
                       <option value="Offer">Offer</option>
                       <option value="Rejected">Rejected</option>
+                      <option value="Withdrawn">Withdrawn</option>
+                      <option value="On Hold">On Hold</option>
                     </select>
                     <button
                       onClick={() => handleDelete(app.id!)}
